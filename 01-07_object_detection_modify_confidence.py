@@ -1,12 +1,7 @@
-import os
 import cv2 as cv
 from ultralytics import YOLO
 
 model = YOLO('yolo11n.pt')
-
-root_path = os.getcwd()
-
-media_path = os.path.join(root_path, 'media_samples', 'tops_cebu.mov')
 
 media_capture = cv.VideoCapture(0)
 

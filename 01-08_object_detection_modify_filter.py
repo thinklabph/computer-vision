@@ -1,12 +1,7 @@
-import os
 import cv2 as cv
 from ultralytics import YOLO
 
 model = YOLO('yolo11n.pt')
-
-root_path = os.getcwd()
-
-media_path = os.path.join(root_path, 'media_samples', 'tops_cebu.mov')
 
 media_capture = cv.VideoCapture(0)
 
@@ -15,7 +10,7 @@ while media_capture.isOpened():
     if not ret:
         break
 
-    results = model(frame, conf=0.6)    # Default confidence is 0.25
+    results = model(frame, classes=[0, 39])    # 0=person, 39=bottle
 
     annotated_frame = results[0].plot()
 
