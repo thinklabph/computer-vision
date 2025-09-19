@@ -5,6 +5,7 @@ from ultralytics import YOLO
 model = YOLO('yolo11n.pt')
 
 root_path = os.getcwd()
+
 media_path = os.path.join(root_path, 'media_samples', 'tagisang_robotics.jpg')
 
 media_capture = cv.imread(media_path)
@@ -18,4 +19,3 @@ cv.imshow('YOLOv11 Detection', annotated_frame)
 cv.waitKey(0)
 
 cv.destroyAllWindows()
-
