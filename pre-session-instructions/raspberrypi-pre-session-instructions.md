@@ -1,6 +1,6 @@
 # Raspberry Pi Pre-session Instructions
 
-Install
+## Install Pipenv
 
 ```
 sudo apt update
