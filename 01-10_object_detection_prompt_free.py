@@ -5,7 +5,7 @@ model = YOLO('yoloe-11s-seg-pf.pt')
 
 # Export the model to ONNX format (optional)
 # imgsz can be adjusted based on your requirements, multiples of 32, e.g., 128, 160, 192, 224, 256, etc.
-model.export(format='onnx', imgsz=128)
+model.export(format='onnx', imgsz=32)
 
 media_capture = cv.VideoCapture(0)
 
@@ -38,7 +38,8 @@ while media_capture.isOpened():
     print('-------------------------')
 
     # annotated_frame = results[0].plot()
-    annotated_frame = results[0].plot(boxes=True, mask=False)
+    # annotated_frame = results[0].plot(boxes=True, masks=False)
+    annotated_frame = results[0].plot(boxes=True, masks=False, conf=False)
 
     cv.imshow('YOLOv11 Detection', annotated_frame)
 
