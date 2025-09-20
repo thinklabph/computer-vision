@@ -8,8 +8,6 @@ model = YOLO('yoloe-11s-seg-pf.pt')
 model.export(format='onnx', imgsz=96)
 
 media_capture = cv.VideoCapture(0)
-media_capture.set(cv.CAP_PROP_FRAME_WIDTH, 640)
-media_capture.set(cv.CAP_PROP_FRAME_HEIGHT, 480)
 
 while media_capture.isOpened():
     ret, frame = media_capture.read()
