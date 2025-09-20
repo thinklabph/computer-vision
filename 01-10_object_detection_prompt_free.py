@@ -5,7 +5,7 @@ model = YOLO('yoloe-11s-seg-pf.pt')
 
 # Export the model to ONNX format (optional)
 # imgsz can be adjusted based on your requirements, multiples of 32, e.g., 128, 160, 192, 224, 256, etc.
-model.export(format='onnx', imgsz=32)
+model.export(format='onnx', imgsz=96)
 
 media_capture = cv.VideoCapture(0)
 media_capture.set(cv.CAP_PROP_FRAME_WIDTH, 640)
@@ -16,8 +16,7 @@ while media_capture.isOpened():
     if not ret:
         break
 
-    # results = model.predict(frame)
-    results = model.predict(frame, imgsz=320)
+    results = model.predict(frame)
 
     # Extract detection results
     for result in results:
