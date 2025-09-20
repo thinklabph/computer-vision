@@ -17,7 +17,7 @@ while media_capture.isOpened():
         break
 
     # results = model.predict(frame)
-    results = model.predict(frame)
+    results = model.predict(frame, imgsz=320)
 
     # Extract detection results
     for result in results:
