@@ -210,3 +210,4 @@ __marimo__/
 # YOLO Models
 yolo*
 detect_results/*
+*.ts
