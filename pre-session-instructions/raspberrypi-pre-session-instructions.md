@@ -1,11 +1,141 @@
 # Raspberry Pi Pre-session Instructions
 
+## Update the Raspberry Pi OS
+
+Open the Terminal.
+
+Raspberry Pi Icon (Upper Left) > Accessories > Terminal
+
+Run the following commands.
+
+``` shell
+sudo apt update
+sudo apt upgrade -y
+```
+
+If asked for the configuration of `/etc/initramfs.conf`, type `Y` then `Enter`.
+
+Install the necessary packages for `pyenv`
+
+``` shell
+sudo apt update
+sudo apt install -y make build-essential libssl-dev zlib1g-dev \
+    libbz2-dev libreadline-dev libsqlite3-dev wget curl llvm \
+    libncursesw5-dev xz-utils tk-dev libxml2-dev libxmlsec1-dev \
+    libffi-dev liblzma-dev
+```
+
+
 ## Install Pipenv
 
-```
+``` shell
 sudo apt update
 sudo apt install -y pipx python3-venv
-pipx ensurepath   # log out/in or open a new shell after this if PATH changes
 pipx install pipenv
+pipx ensurepath
+```
+
+Set creation of virtual environments to be created in the project folder.
+
+``` shell
+grep -qxF 'export PIPENV_VENV_IN_PROJECT=1' ~/.bashrc || echo 'export PIPENV_VENV_IN_PROJECT=1' >> ~/.bashrc
+```
+
+Close all Terminal windows and open a new one.
+
+Run the command below to check whether `pipenv` has successfully installed.
+
+``` shell
 pipenv --version
 ```
+
+## Install `pyenv`
+
+Run the command below.
+
+``` shell
+curl -fsSL https://pyenv.run | bash
+```
+
+This will take a while to install.
+
+Add pyenv to bashrc
+
+``` shell
+echo 'export PYENV_ROOT="$HOME/.pyenv"' >> ~/.bashrc
+echo '[[ -d $PYENV_ROOT/bin ]] && export PATH="$PYENV_ROOT/bin:$PATH"' >> ~/.bashrc
+echo 'eval "$(pyenv init - bash)"' >> ~/.bashrc
+```
+
+Close all Terminal windows and open a new one.
+
+Run the command below to check whether `pyenv` was successfully installed.
+
+``` shell
+pyenv --version
+```
+
+## Install Python 3.13
+
+Run the command below.
+
+``` shell
+pyenv install 3.13
+```
+
+Note: This will only install Python 3.13 but it will not modify the python version that is currently being used by the system.
+
+## Clone this repository
+
+Open the terminal and go to the Desktop directory.
+
+``` shell
+cd ~/Desktop
+```
+
+Clone this repository
+
+``` shell
+git clone https://github.com/thinklabph/computer-vision.git
+```
+
+## Installing Virtual Environment and Dependencies
+
+Go inside the project folder.
+
+``` shell
+cd computer-vision
+```
+
+Install Virtual Environment and it's dependencies
+
+``` shell
+pipenv install --dev
+```
+
+Check Python version before activating virtual environment
+
+``` shell
+python --version
+```
+
+Activate the virtual environment
+
+``` shell
+pipenv shell
+```
+
+Check Python version with activate virtual environment
+
+``` shell
+python --version
+```
+
+# Preload the Computer Vision Models
+
+Run the command
+
+``` shell
+python 00_pre-session.py
+```
+
