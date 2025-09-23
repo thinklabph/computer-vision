@@ -3,8 +3,8 @@ from ultralytics import YOLO
 
 model = YOLO('yoloe-11s-seg.pt')
 
-# object_detect_list = ['person', 'bottle', 'car', 'cat', 'dog']
-# model.set_classes(object_detect_list)
+object_detect_list = ['person', 'bottle', 'car', 'cat', 'dog']
+model.set_classes(object_detect_list)
 
 media_capture = cv.VideoCapture(0)
 
