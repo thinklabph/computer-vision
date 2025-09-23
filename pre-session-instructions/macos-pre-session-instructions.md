@@ -1,54 +1,121 @@
 # MacOS Pre-session Instructions
 
+# Install `pyenv`
 
-# Make sure that `pipenv` will create the virtual environment in the project folder
+Open `Terminal` app.
+
+Follow the instructions in the link below to install `pyenv`.
+
+https://github.com/pyenv/pyenv?tab=readme-ov-file#macos
+
+Restart the Terminal
+
+``` shell
+source ~/.zshrc
 ```
+
+Check if `pyenv` has been successfully installed.
+
+``` shell
+pyenv --version
+```
+
+If the above command returned an error, run the command below to add `pyenv` to the PATH variables.
+
+``` shell
+echo 'export PYENV_ROOT="$HOME/.pyenv"' >> ~/.zshrc
+echo '[[ -d $PYENV_ROOT/bin ]] && export PATH="$PYENV_ROOT/bin:$PATH"' >> ~/.zshrc
+echo 'eval "$(pyenv init - zsh)"' >> ~/.zshrc
+```
+
+# Install Python 3.13 via `pyenv`
+
+``` shell
+pyenv install 3.13
+```
+
+If you don't have a previous installation of python, run the command below. This will set the default version of Python to 3.13
+``` shell
+pyenv global 3.13
+```
+
+Verify has successfully run.
+
+``` shell
+python --version
+pip --version
+```
+
+## Install pipenv
+
+``` shell
+pip install pipenv
+```
+
+Make sure that `pipenv` will create the virtual environment in the project folder
+
+``` shell
 grep -qxF 'export PIPENV_VENV_IN_PROJECT=1' ~/.zshrc || echo 'export PIPENV_VENV_IN_PROJECT=1' >> ~/.zshrc
 ```
 
 Reload the shell
 
-```
+``` shell
 source ~/.zshrc
 ```
 
-Check that the virtual environment will be created in the project folder
+## Clone this repository
 
+Open the terminal and go to the Desktop directory.
+
+``` shell
+cd ~/Desktop
 ```
-echo $PIPENV_VENV_IN_PROJECT
+
+Clone this repository
+
+``` shell
+git clone https://github.com/thinklabph/computer-vision.git
 ```
 
-This should output `1`.
+## Installing Virtual Environment and Dependencies
 
+Go inside the project folder.
 
-Create the Virtual Environment and install the necessary python packages
+``` shell
+cd computer-vision
 ```
+
+Install Virtual Environment and it's dependencies
+
+``` shell
 pipenv install --dev
 ```
 
-Activate the Pipenv Virtual environment
+Check Python version before activating virtual environment
 
+``` shell
+python --version
 ```
+
+Activate the virtual environment
+
+``` shell
 pipenv shell
 ```
 
-Deactivate the Pipenv Virtual environment
+Check Python version with activate virtual environment
 
-
-
-Check which Pipenv environment is being used.
-
-```
-pipenv --venv
+``` shell
+python --version
 ```
 
-If the Pipenv environment is located in `~/.local/share/virtualenvs/<project-env-name>` then this is a user based environment. This is not what we want.
+# Preload the Computer Vision Models
 
-We want a virtual environment that is created inside the project folder because it keeps all dependencies isolated to the project, makes it easier to manage and share the environment with others, and avoids conflicts with global or user-based Python packages.
+Run the command
 
-Remove the user based Pipenv environment
-
+``` shell
+python 00_pre-session.py
 ```
-pipenv --rm
-```
+
 
