@@ -45,3 +45,9 @@ while media_capture.isOpened():
 
 media_capture.release()
 cv.destroyAllWindows()
+
+
+class_names = model.names
+print("Items that the model can detect:")
+for class_id, class_name in class_names.items():
+    print(f"{class_id}: {class_name}")
