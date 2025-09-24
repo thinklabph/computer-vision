@@ -1,5 +1,13 @@
 # MacOS Pre-session Instructions
 
+## Install Visual Studio Code
+
+https://code.visualstudio.com/
+
+## Install `git`
+
+https://github.com/git-guides/install-git
+
 # Install `pyenv`
 
 Open `Terminal` app.
@@ -17,7 +25,7 @@ source ~/.zshrc
 Check if `pyenv` has been successfully installed.
 
 ``` shell
-pyenv --version
+pyenv --version     # pyenv 2.6.7
 ```
 
 If the above command returned an error, run the command below to add `pyenv` to the PATH variables.
@@ -42,8 +50,8 @@ pyenv global 3.13
 Verify has successfully run.
 
 ``` shell
-python --version
-pip --version
+python --version    # Python 3.13.7
+pip --version       # pip 25.2 from /Users/.../python3.13/site-packages/pip (python 3.13)
 ```
 
 ## Install pipenv
@@ -78,7 +86,7 @@ Clone this repository
 git clone https://github.com/thinklabph/computer-vision.git
 ```
 
-## Installing Virtual Environment and Dependencies
+## Install Virtual Environment and Dependencies
 
 Go inside the project folder.
 
@@ -110,12 +118,22 @@ Check Python version with activate virtual environment
 python --version
 ```
 
-# Preload the Computer Vision Models
+## Preload the Computer Vision Models
 
 Run the command
 
 ``` shell
 python 00_pre-session.py
 ```
+
+This will download the computer vision models. Wait for it to finish downloading.
+
+
+# ────────────────────────────────
+# 🎉 You're all set! 🎉
+# 
+# See you in the **AI Computer Vision Workshop!**
+# ────────────────────────────────
+
 
 

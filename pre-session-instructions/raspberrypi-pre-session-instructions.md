@@ -2,7 +2,7 @@
 
 ## Update the Raspberry Pi OS
 
-Open the Terminal.
+Open the `Terminal`.
 
 Raspberry Pi Icon (Upper Left) > Accessories > Terminal
 
@@ -138,4 +138,12 @@ Run the command
 ``` shell
 python 00_pre-session.py
 ```
+
+This will download the computer vision models. Wait for it to finish downloading.
+
+# ────────────────────────────────
+# 🎉 You're all set! 🎉
+# 
+# See you in the **AI Computer Vision Workshop!**
+# ────────────────────────────────
 
