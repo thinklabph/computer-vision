@@ -8,12 +8,16 @@ Raspberry Pi Icon (Upper Left) > Accessories > Terminal
 
 Run the following commands.
 
+Upgrade packages in the OS.
+
 ``` shell
 sudo apt update
 sudo apt upgrade -y
 ```
 
 If asked for the configuration of `/etc/initramfs.conf`, type `Y` then `Enter`.
+
+## Install `pyenv`
 
 Install the necessary packages for `pyenv`
 
@@ -24,32 +28,6 @@ sudo apt install -y make build-essential libssl-dev zlib1g-dev \
     libncursesw5-dev xz-utils tk-dev libxml2-dev libxmlsec1-dev \
     libffi-dev liblzma-dev
 ```
-
-
-## Install Pipenv
-
-``` shell
-sudo apt update
-sudo apt install -y pipx python3-venv
-pipx install pipenv
-pipx ensurepath
-```
-
-Set creation of virtual environments to be created in the project folder.
-
-``` shell
-grep -qxF 'export PIPENV_VENV_IN_PROJECT=1' ~/.bashrc || echo 'export PIPENV_VENV_IN_PROJECT=1' >> ~/.bashrc
-```
-
-Close all Terminal windows and open a new one.
-
-Run the command below to check whether `pipenv` has successfully installed.
-
-``` shell
-pipenv --version
-```
-
-## Install `pyenv`
 
 Run the command below.
 
@@ -74,6 +52,31 @@ Run the command below to check whether `pyenv` was successfully installed.
 ``` shell
 pyenv --version
 ```
+
+## Install Pipenv
+
+``` shell
+sudo apt update
+sudo apt install -y pipx python3-venv
+pipx install pipenv
+pipx ensurepath
+```
+
+Set creation of virtual environments to be created in the project folder.
+
+``` shell
+grep -qxF 'export PIPENV_VENV_IN_PROJECT=1' ~/.bashrc || echo 'export PIPENV_VENV_IN_PROJECT=1' >> ~/.bashrc
+```
+
+Close all Terminal windows and open a new one.
+
+Run the command below to check whether `pipenv` has successfully installed.
+
+``` shell
+pipenv --version
+```
+
+
 
 ## Install Python 3.13
 
