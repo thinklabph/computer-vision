@@ -93,6 +93,18 @@ Run the command below.
 pyenv install 3.13
 ```
 
+If you don't have a previous installation of python, run the command below. This will set the default version of Python to 3.13
+``` shell
+pyenv global 3.13
+```
+
+Verify has successfully run.
+
+``` shell
+python --version    # Python 3.13.7
+pip --version       # pip 25.2 from /Users/.../python3.13/site-packages/pip (python 3.13)
+```
+
 Note: This will only install Python 3.13 but it will not modify the python version that is currently being used by the system.
 
 ## Clone this repository
