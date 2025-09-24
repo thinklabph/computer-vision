@@ -1,11 +1,7 @@
 import cv2 as cv
 from ultralytics import YOLO
 
-model = YOLO('yoloe-11s-seg-pf.pt')
-
-# Export the model to ONNX format (optional)
-# imgsz can be adjusted based on your requirements, multiples of 32, e.g., 128, 160, 192, 224, 256, etc.
-model.export(format='onnx', imgsz=96)
+model = YOLO('yolo11n.pt')
 
 media_capture = cv.VideoCapture(0)
 
@@ -14,13 +10,14 @@ while media_capture.isOpened():
     if not ret:
         break
 
-    results = model.predict(frame)
+    results = model.track(frame, classes=[0], conf=0.6) # class 0 is for person
 
     # Extract detection results
     for result in results:
         boxes = result.boxes
         if boxes is not None:
             for box in boxes:
+                # print(box)
                 # Get class name
                 class_id = int(box.cls[0])
                 class_name = model.names[class_id]
@@ -31,14 +28,16 @@ while media_capture.isOpened():
                 # Get bounding box coordinates (xyxy format)
                 x1, y1, x2, y2 = box.xyxy[0].tolist()
                 
+                # Get tracking ID
+                track_id = int(box.id[0]) if box.id is not None else None
+                
                 print(f"Object: {class_name}, Confidence: {confidence:.2f}, "
-                      f"Coordinates: ({x1:.1f}, {y1:.1f}, {x2:.1f}, {y2:.1f})")
+                      f"Coordinates: ({x1:.1f}, {y1:.1f}, {x2:.1f}, {y2:.1f}), "
+                      f"Track ID: {track_id}")
                 
     print('-------------------------')
 
-    # annotated_frame = results[0].plot()
-    # annotated_frame = results[0].plot(boxes=True, masks=False)
-    annotated_frame = results[0].plot(boxes=True, masks=False, conf=False)
+    annotated_frame = results[0].plot()
 
     cv.imshow('YOLOv11 Detection', annotated_frame)
 
