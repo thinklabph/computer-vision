@@ -1,7 +1,10 @@
 import cv2 as cv
 from ultralytics import YOLO
 
-model = YOLO('yoloe-11s-seg-pf.pt')
+model = YOLO('yoloe-11s-seg.pt')
+
+object_detect_list = ['dark blue chair', 'person wearing jacket']
+model.set_classes(object_detect_list)
 
 media_capture = cv.VideoCapture(0)
 
@@ -10,6 +13,7 @@ while media_capture.isOpened():
     if not ret:
         break
 
+    # results = model.predict(frame)
     results = model.predict(frame)
 
     # Extract detection results
@@ -17,7 +21,6 @@ while media_capture.isOpened():
         boxes = result.boxes
         if boxes is not None:
             for box in boxes:
-                print(box)
                 # Get class name
                 class_id = int(box.cls[0])
                 class_name = model.names[class_id]
@@ -33,9 +36,7 @@ while media_capture.isOpened():
                 
     print('-------------------------')
 
-    # annotated_frame = results[0].plot()
-    # annotated_frame = results[0].plot(boxes=True, masks=False)
-    annotated_frame = results[0].plot(boxes=True, masks=False, conf=False)
+    annotated_frame = results[0].plot()
 
     cv.imshow('YOLOv11 Detection', annotated_frame)
 
