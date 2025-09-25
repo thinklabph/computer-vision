@@ -169,3 +169,12 @@ This will download the computer vision models. Wait for it to finish downloading
 # See you in the **AI Computer Vision Workshop!**
 # ────────────────────────────────
 
+
+# Windows Fix
+
+
+``` shell
+.venv/bin/pip uninstall torch torchvision torchaudio ultralytics -y
+.venv/bin/pip install torch torchvision --index-url https://download.pytorch.org/whl/cpu
+.venv/bin/pip install ultralytics
+```
