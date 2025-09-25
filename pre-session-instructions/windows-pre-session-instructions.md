@@ -202,7 +202,7 @@ cd computer-vision
 
 Install python packages (This takes a while)
 ```
-pip install --dev --verbose
+pipenv install --dev --verbose
 ```
 
 Activate Virtual Environment
