@@ -1,0 +1,43 @@
+
+Reinstall python packages
+
+``` shell
+.venv/bin/pip uninstall torch torchvision torchaudio ultralytics -y
+.venv/bin/pip install torch torchvision --index-url https://download.pytorch.org/whl/cpu
+.venv/bin/pip install ultralytics
+```
+
+Open powershell as Administrator
+
+``` powershell
+winget install usbipd-win
+```
+
+Close and open powershell
+
+``` powershell
+usbipd list     # Note the Bus ID of the webcam
+```
+
+```
+usbipd list
+
+Connected:
+BUSID  VID:PID    DEVICE                                                        STATE
+2-1    046d:c52f  USB Input Device                                              Not shared
+2-6    0408:403a  ACER HD User Facing, APP Mode                                 Not shared
+2-10   8087:0033  Intel(R) Wireless Bluetooth(R)                                Not shared
+```
+
+``` powershell
+usbipd bind --busid <Bus ID of webcam>
+```
+
+
+
+
+
+``` shell
+sudo apt install usbutils
+```
+

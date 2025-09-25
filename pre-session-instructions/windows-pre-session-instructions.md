@@ -172,9 +172,48 @@ This will download the computer vision models. Wait for it to finish downloading
 
 # Windows Fix
 
+We'll do this directly in Windows - no longer in WSL
+
+Install Python 3.13 via the Microsoft Store (easy)
+
+Or 
+
+Download installer in https://www.python.org/downloads/. (Medyo mahirap)
+
+Install and check "Add Python to PATH"
+
+Open Powershell
+
+``` powershell
+pip install pipenv
+```
+
+
+Clone the Github Repository
 
 ``` shell
-.venv/bin/pip uninstall torch torchvision torchaudio ultralytics -y
-.venv/bin/pip install torch torchvision --index-url https://download.pytorch.org/whl/cpu
-.venv/bin/pip install ultralytics
+git clone https://github.com/thinklabph/computer-vision.git
 ```
+
+Go inside the project folder
+```
+cd computer-vision
+```
+
+Install python packages (This takes a while)
+```
+pip install --dev --verbose
+```
+
+Activate Virtual Environment
+
+```
+pipenv shell
+```
+
+Download the models
+
+```
+python 00_pre-session.py
+```
+
