@@ -1,10 +1,7 @@
 import cv2 as cv
 from ultralytics import YOLO
 
-model = YOLO('yoloe-11s-seg.pt')
-
-object_detect_list = ['handsome man', 'ugly person', 'short person']
-model.set_classes(object_detect_list)
+model = YOLO('yolo11x.pt')
 
 media_capture = cv.VideoCapture(0)
 
@@ -13,8 +10,7 @@ while media_capture.isOpened():
     if not ret:
         break
 
-    # results = model.predict(frame)
-    results = model.predict(frame)
+    results = model.predict(frame)    # Default confidence is 0.25
 
     # Extract detection results
     for result in results:
@@ -24,6 +20,9 @@ while media_capture.isOpened():
                 # Get class name
                 class_id = int(box.cls[0])
                 class_name = model.names[class_id]
+
+                if class_name == 'person':
+                    print('HOORAY!')
                 
                 # Get confidence score
                 confidence = float(box.conf[0])
@@ -45,9 +44,3 @@ while media_capture.isOpened():
 
 media_capture.release()
 cv.destroyAllWindows()
-
-
-class_names = model.names
-print("Items that the model can detect:")
-for class_id, class_name in class_names.items():
-    print(f"{class_id}: {class_name}")

@@ -10,7 +10,7 @@ while media_capture.isOpened():
     if not ret:
         break
 
-    results = model.predict(frame)
+    results = model.predict(frame, conf=0.7)
     # results = model.predict(frame, conf=0.5)  # Set a confidence threshold (e.g., 0.5)
 
     annotated_frame = results[0].plot()

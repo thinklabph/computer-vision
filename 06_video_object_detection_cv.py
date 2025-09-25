@@ -8,14 +8,14 @@ root_path = os.getcwd()
 
 media_path = os.path.join(root_path, 'media_samples', 'tops_cebu.mov')
 
-media_capture = cv.VideoCapture(media_path)
+media_capture = cv.VideoCapture(0)
 
 while media_capture.isOpened():
     ret, frame = media_capture.read()
     if not ret:
         break
 
-    results = model(frame)
+    results = model.predict(frame)
 
     annotated_frame = results[0].plot()
 
