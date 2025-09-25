@@ -1,4 +1,4 @@
-# MacOS Pre-session Instructions
+# Windows Pre-session Instructions
 
 
 
